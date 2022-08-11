@@ -131,23 +131,7 @@ class TweetDfExtractor:
         if save:
             df.to_csv('processed_tweet_data.csv', index=False)
             print('File Successfully Saved.!!!')
-        return df
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+        return df               
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
     columns = ['created_at', 'source', 'original_text','clean_text', 'sentiment','polarity','subjectivity', 'lang', 'favorite_count', 'retweet_count', 

@@ -7,11 +7,11 @@ from decouple import config
 
 
 def app():
-    host = config('Host', default='')
-    database = config('Database', default='')
-    user = config('User', default='')
-    password = config('Password', default='')
-    port = config('Port', default='')
+    host = "localhost"
+    database = "twitter-analysis",
+    user = "postgres",
+    password = 1234,
+    port = 5432,
     db1 = addData.DBoperations(host, database, user, password, port)
     conn = db1.createDB()
 

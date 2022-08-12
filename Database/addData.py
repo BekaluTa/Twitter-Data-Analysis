@@ -144,5 +144,5 @@ if __name__ == '__main__':
     db1 = DBoperations(host, database, user, password, port)
     db1.createDB()
 
-    df = pd.read_csv('../clean_tweet.csv')[6000:9500]
-    db1.insert_to_tweet_table('tweets', df=df, table_name='tweetinformation')
+    df = pd.read_csv('../processed_tweet_data.csv')[6000:9500]
+    db1.insert_to_tweet_table('tweets', df=df, table_name='Twitter')

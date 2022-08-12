@@ -1,43 +1,48 @@
-import psycopg2
 import pandas as pd
+import pandas as pd
+import numpy as np
+import psycopg2
+from sqlalchemy import create_engine
+import psycopg2.extras as extras
+import time
 
-import streamlit as st
 
-data=pd.read_csv('')
-# creating Database connectivity with Postgresql
+df=pd.read_csv('processed_tweet_data.csv')
+print("Data Loaded")
 
 conn=psycopg2.connect(database='twitter-analysis',user='postgres',host='localhost',port='5432',password='1234')
-#Creating Cursoer Enviroment
-
+print("database Connected")
 cursor=conn.cursor()
 conn.autocommit=True
 
-#checking the existance of table in the Database
-
-# check the existance of Table Challenege before Creating
 cursor.execute("DROP TABLE IF EXISTS Twitter")
 
+
 #Creating Tables
-sql='''CREATE Table challenege 
-(name CHAR(20) NOT NULL,
-id int,
-education CHAR(20),
-Sex CHAR(20))'''
+sql='''CREATE Table Twitter 
+(created_at text NOT NULL,
+source text,
+original_text text,
+polarity int,
+subjectivity int,
+lang text,
+favourite_count int,
+retweet_count int,
+original_author text,
+followers_count int,
+friends_count int,
+possibly_sensitive text,
+hashtags text,
+user_mentions text,
+place text)'''
 
-# Excuting Queires
-cursor.execute(sql)
-print("table Created Scuessfully")
+print("Tabele Created")
 
-
-#inserting Data in to Datbase Table
-insert_query_execute_val = f"""insert into Twitter(Region, 
-                    Population,
-                    Males Population
+insert_query_execute_val = f"""insert into Twitter(created_at,source,original_text,polarity,subjectivity,lang,favourite_count
+,retweet_count,original_author,followers_count,friends_count,possibly_sensitive,hashtags,user_mentions,place
                     ) 
                     values %s """
                     
-psycopg2.extras.execute_values(cursor, insert_query_execute_val, data.values)
+psycopg2.extras.execute_values(cursor, insert_query_execute_val, df.values)
 
-# Data is Pandas Variable
-
-print("Data Loadeded Sucessfully")
+print("CSV Loaded into Database Table")

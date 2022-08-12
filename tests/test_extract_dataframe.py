@@ -50,8 +50,8 @@ class TestTweetDfExtractor(unittest.TestCase):
         text = ["#Pelosi airplane landed safely in #Taiwan",
         "Watch the video of the beginning of the Chinese bombing of Taiwan during Pelosi visit from here",
         "#Pelosi \n#Taipei \n#taiwan\n#XiJinping \n#China \nOn a verge of another war https://t.co/DuqDiSnWcd",
-        "#HOBIPALOOZA #LaAcademiaExpulsion #WEURO2022 #jhopeAtLollapalooza #SuzukiPakistan #Fantastico #Taiwan #breastfeeding #Kosovo #BORNPINK  strong :writing_hand::purple_heart: https://t.co/GtZeNL24rm",
-        "#Pelosi\n#china\nChina Time :v: https://t.co/tEDjzTlszu"]
+        "#HOBIPALOOZA #LaAcademiaExpulsion #WEURO2022 #jhopeAtLollapalooza #SuzukiPakistan #Fantastico #Taiwan #breastfeeding #Kosovo #BORNPINK  strong \u270d\ufe0f\ud83d\udc9c https://t.co/GtZeNL24rm",
+        "#Pelosi\n#china\nChina Time \u270c\ufe0f https://t.co/tEDjzTlszu"]
         self.assertEqual(self.df.find_full_text(), text)
     def test_find_sentiments(self):
         self.assertEqual(
